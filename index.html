@@ -185,7 +185,7 @@
                 for (let rootId = 0; rootId < nextRootId; rootId++) {
                     try {
                         const cidData = await callContract('getRootCid', [proofSetId, rootId]);
-                        if (cidData.data.length === 0) {
+                        if (cidData.data == '0x') {
                             console.log(`Root ${rootId} deleted`);
                             continue;
                         }
