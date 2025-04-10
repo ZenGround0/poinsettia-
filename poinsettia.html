@@ -58,10 +58,10 @@
     </style>
 </head>
 <body>
-    <h1>PDP Root Image Viewer</h1>
+    <h1>FilOz Zoo. Verified on PDP</h1>
     
     <div>
-        <label for="rpc-url">Ethereum RPC URL:</label>
+        <label for="rpc-url">FeVM RPC URL:</label>
         <input type="text" id="rpc-url" value="https://api.node.glif.io/rpc/v1" />
     </div>
     
@@ -154,12 +154,23 @@
         async function loadRoots() {
             const status = document.getElementById('status');
             const imageGrid = document.getElementById('image-grid');
+            const verificationLink = document.getElementById('verification-link');
             const rpcUrl = document.getElementById('rpc-url').value;
             const curioUrl = document.getElementById('curio-url').value;
             const proofSetId = document.getElementById('proof-set-id').value;
             
             status.textContent = 'Loading roots...';
             imageGrid.innerHTML = '';
+
+            // Add verification link
+            verificationLink.innerHTML = `
+                <a href="https://pdp-explorer.eng.filoz.org/proofsets/${proofSetId}" 
+                target="_blank" 
+                style="display: inline-block; padding: 8px 16px; background-color: #2196F3; color: white; 
+                        text-decoration: none; border-radius: 4px; font-weight: bold;">
+                Verify on PDP Explorer
+                </a>
+            `;
             
             try {
                 // Step 1: Call the contract to get the number of roots
